@@ -1,7 +1,6 @@
 package org.transfert.project.services.impl;
 
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.transfert.project.entities.Etudiant;

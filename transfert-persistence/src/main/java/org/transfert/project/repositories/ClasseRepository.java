@@ -6,5 +6,5 @@ import org.transfert.project.entities.Classe;
 public interface ClasseRepository extends JpaRepository<Classe, Long> {
 
    public Classe findByNiveau(String niveau);
-   public Classe findByNomClasse(String nom);
+   public Classe findByNom(String nom);
 }

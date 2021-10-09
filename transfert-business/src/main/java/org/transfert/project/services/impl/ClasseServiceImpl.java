@@ -16,11 +16,11 @@ public class ClasseServiceImpl implements ClasseService {
 
     @Override
     public Classe findByNiveau(String niveau) {
-        return null;
+        return this.classeRepository.findByNiveau(niveau);
     }
 
     @Override
     public Classe findByNomClasse(String nom) {
-        return null;
+        return this.classeRepository.findByNom(nom);
     }
 }

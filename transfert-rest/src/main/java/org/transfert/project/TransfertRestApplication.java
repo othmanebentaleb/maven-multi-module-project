@@ -10,8 +10,6 @@ import org.transfert.project.repositories.ClasseRepository;
 import org.transfert.project.repositories.EtudiantRepository;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @SpringBootApplication(scanBasePackages = "org.transfert.project")
 public class TransfertRestApplication implements CommandLineRunner {
