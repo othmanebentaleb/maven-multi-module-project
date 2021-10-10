@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @NoArgsConstructor
@@ -17,10 +18,12 @@ public class Enseignant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEnseignant;
+    @NotEmpty(message = "Nom ne doit pas être vide")
     private String nom;
+    @NotEmpty(message = "Prénom ne doit pas être vide")
     private String prenom;
-    private String email;
-    private String telephone;
+    @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "coordonnees")
+    private Coordonnees coordonnees;
     private String matiere;
     @ManyToOne
     @JoinColumn(name = "idClasse")

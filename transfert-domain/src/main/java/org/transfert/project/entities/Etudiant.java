@@ -23,12 +23,8 @@ public class Etudiant {
     private String nom;
     @NotEmpty(message = "Prénom ne doit pas être vide")
     private String prenom;
-    @NotEmpty(message = "Numéro de téléphone ne doit pas être vide")
-    @Pattern(regexp="^(?:(?:\\+|00)33[\\s.-]{0,3}(?:\\(0\\)[\\s.-]{0,3})?|0)[1-9](?:(?:[\\s.-]?\\d{2}){4}|\\d{2}(?:[\\s.-]?\\d{3}){2})$",message = "Numéro de téléphone invalide")
-    private String telephone;
-    @NotEmpty(message = "Addresse mail ne doit pas être vide")
-    @Email(message = "Veuillez saisir une adresse mail valide")
-    private String email;
+    @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "coordonnees")
+    private Coordonnees coordonnees;
     @ManyToOne
     @JoinColumn(name = "idClasse")
     private Classe classe;
