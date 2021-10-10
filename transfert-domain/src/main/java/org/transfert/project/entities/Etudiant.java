@@ -25,6 +25,8 @@ public class Etudiant {
     private String prenom;
     @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "coordonnees")
     private Coordonnees coordonnees;
+    @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "absences")
+    private FicheAbsence absence;
     @ManyToOne
     @JoinColumn(name = "idClasse")
     private Classe classe;

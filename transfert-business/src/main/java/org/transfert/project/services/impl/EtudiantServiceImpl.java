@@ -25,6 +25,11 @@ public class EtudiantServiceImpl implements EtudiantService {
     }
 
     @Override
+    public Etudiant findByEmail(String email) {
+        return etudiantRepository.findByEmail(email);
+    }
+
+    @Override
     public List<Etudiant> getAllEtudiants() {
         return etudiantRepository.findAll();
     }

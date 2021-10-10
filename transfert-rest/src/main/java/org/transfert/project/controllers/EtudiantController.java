@@ -1,10 +1,7 @@
 package org.transfert.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.transfert.project.entities.Etudiant;
 import org.transfert.project.repositories.ClasseRepository;
 import org.transfert.project.services.EtudiantService;
@@ -32,6 +29,9 @@ public class EtudiantController {
     public List<Etudiant> getAllEtudiants(){
         classeRepository.findAll();
         return etudiantService.getAllEtudiants();
-
+    }
+    @GetMapping("/etudiant")
+    public Etudiant findByEmail(@RequestParam String email){
+        return etudiantService.findByEmail(email);
     }
 }
