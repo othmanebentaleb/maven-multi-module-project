@@ -1,5 +1,6 @@
 package org.school.project.controllers;
 
+import org.school.project.exception.EtudiantNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,6 @@ public class EtudiantController {
 
     @PostMapping("/etudiants")
     public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant){
-
         Etudiant etudiantCreer = etudiantService.ajouterEtudiant(etudiant);
         URI location =ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etudiantCreer.getIdEtudiant()).toUri();
         return ResponseEntity.created(location).build();
@@ -40,7 +40,9 @@ public class EtudiantController {
     @GetMapping("/etudiants/{email}")
     public ResponseEntity<Etudiant> findByEmail(@PathVariable String email){
         Optional<Etudiant> etudiant = etudiantService.findByEmail(email);
-        ResponseEntity response = etudiant.map(ResponseEntity::ok).orElseGet(()->ResponseEntity.notFound().build());
-        return response;
+        if(!etudiant.isPresent()){
+            throw new EtudiantNotFoundException("Etudiant avec email: '"+email+"' non trouvé");
+        }
+        return etudiant.map(ResponseEntity::ok).get();
     }
 }
