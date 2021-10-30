@@ -1,5 +1,6 @@
 package org.school.project.controllers;
 
+import org.school.project.exception.EtudiantExistsException;
 import org.school.project.exception.EtudiantNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,8 @@ public class EtudiantController {
 
     @PostMapping("/etudiants")
     public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant) {
+        Optional<Etudiant> etudiantExists = etudiantService.findByEmail(etudiant.getCoordonnees().getEmail());
+        if(etudiantExists.isPresent()) throw new EtudiantExistsException("Cette adresse mail existe déjà");
         Etudiant etudiantCreer = etudiantService.ajouterEtudiant(etudiant);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etudiantCreer.getIdEtudiant()).toUri();
         return ResponseEntity.created(location).build();
@@ -41,9 +44,7 @@ public class EtudiantController {
     @GetMapping("/etudiants/{email}")
     public ResponseEntity<Etudiant> findByEmail(@PathVariable String email) {
         Optional<Etudiant> etudiant = etudiantService.findByEmail(email);
-        if (!etudiant.isPresent()) {
-            throw new EtudiantNotFoundException("Etudiant avec email: '" + email + "' non trouvé");
-        }
+        if (!etudiant.isPresent()) throw new EtudiantNotFoundException("Etudiant avec email: '" + email + "' non trouvé");
         return etudiant.map(ResponseEntity::ok).get();
     }
 }

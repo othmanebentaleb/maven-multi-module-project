@@ -24,4 +24,9 @@ public class CustomizedRespEntityHandler extends ResponseEntityExceptionHandler 
         return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(EtudiantExistsException.class)
+    public final ResponseEntity<Object> handleEtudiantExistsException(EtudiantExistsException ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity(exceptionResponse, HttpStatus.CONFLICT);
+    }
 }
