@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.school.project.repositories.ClasseRepository;
 import org.school.project.repositories.EtudiantRepository;
 
-@SpringBootApplication(scanBasePackages = "org.transfert.project")
-public class TransfertRestApplication implements CommandLineRunner {
+@SpringBootApplication(scanBasePackages = "org.school.project")
+public class SchoolRestApplication implements CommandLineRunner {
     public static void main(String[] args) {
-        SpringApplication.run(TransfertRestApplication.class);
+        SpringApplication.run(SchoolRestApplication.class);
     }
     @Autowired
     private EtudiantRepository etudiantRepository;
