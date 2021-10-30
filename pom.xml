@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>transfert-domain</module>
-        <module>transfert-persistence</module>
-        <module>transfert-business</module>
-        <module>transfert-rest</module>
+        <module>school-domain</module>
+        <module>school-persistence</module>
+        <module>school-business</module>
+        <module>school-rest</module>
     </modules>
 
     <parent>
@@ -17,8 +17,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.transfert.project</groupId>
-    <artifactId>transfert-parent-project</artifactId>
+    <groupId>org.school.project</groupId>
+    <artifactId>school-parent-project</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
