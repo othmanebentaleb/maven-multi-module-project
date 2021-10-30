@@ -26,22 +26,23 @@ public class EtudiantController {
     }
 
     @PostMapping("/etudiants")
-    public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant){
+    public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant) {
         Etudiant etudiantCreer = etudiantService.ajouterEtudiant(etudiant);
-        URI location =ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etudiantCreer.getIdEtudiant()).toUri();
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etudiantCreer.getIdEtudiant()).toUri();
         return ResponseEntity.created(location).build();
     }
 
     @GetMapping("/etudiants")
-    public List<Etudiant> getAllEtudiants(){
+    public List<Etudiant> getAllEtudiants() {
         classeRepository.findAll();
         return etudiantService.getAllEtudiants();
     }
+
     @GetMapping("/etudiants/{email}")
-    public ResponseEntity<Etudiant> findByEmail(@PathVariable String email){
+    public ResponseEntity<Etudiant> findByEmail(@PathVariable String email) {
         Optional<Etudiant> etudiant = etudiantService.findByEmail(email);
-        if(!etudiant.isPresent()){
-            throw new EtudiantNotFoundException("Etudiant avec email: '"+email+"' non trouvé");
+        if (!etudiant.isPresent()) {
+            throw new EtudiantNotFoundException("Etudiant avec email: '" + email + "' non trouvé");
         }
         return etudiant.map(ResponseEntity::ok).get();
     }
