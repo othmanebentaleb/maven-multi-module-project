@@ -8,6 +8,7 @@ import org.school.project.repositories.EtudiantRepository;
 import org.school.project.services.EtudiantService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EtudiantServiceImpl implements EtudiantService {
@@ -25,7 +26,7 @@ public class EtudiantServiceImpl implements EtudiantService {
     }
 
     @Override
-    public Etudiant findByEmail(String email) {
+    public Optional<Etudiant> findByEmail(String email) {
         return etudiantRepository.findByEmail(email);
     }
 

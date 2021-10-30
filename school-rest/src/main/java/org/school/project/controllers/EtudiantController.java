@@ -10,6 +10,7 @@ import org.school.project.services.EtudiantService;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class EtudiantController {
@@ -23,8 +24,9 @@ public class EtudiantController {
         this.classeRepository = classeRepository;
     }
 
-    @PostMapping("/etudiant/save")
+    @PostMapping("/etudiants")
     public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant){
+
         Etudiant etudiantCreer = etudiantService.ajouterEtudiant(etudiant);
         URI location =ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etudiantCreer.getIdEtudiant()).toUri();
         return ResponseEntity.created(location).build();
@@ -35,8 +37,10 @@ public class EtudiantController {
         classeRepository.findAll();
         return etudiantService.getAllEtudiants();
     }
-    @GetMapping("/etudiant")
-    public Etudiant findByEmail(@RequestParam String email){
-        return etudiantService.findByEmail(email);
+    @GetMapping("/etudiants/{email}")
+    public ResponseEntity<Etudiant> findByEmail(@PathVariable String email){
+        Optional<Etudiant> etudiant = etudiantService.findByEmail(email);
+        ResponseEntity response = etudiant.map(ResponseEntity::ok).orElseGet(()->ResponseEntity.notFound().build());
+        return response;
     }
 }
