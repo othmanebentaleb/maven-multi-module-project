@@ -7,6 +7,7 @@ import org.school.project.repositories.ClasseRepository;
 import org.school.project.services.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +34,9 @@ public class EtudiantController {
     }
 
     @PostMapping("/etudiants")
-    public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant, @RequestHeader(name = ACCEPT_LANGUAGE)Locale locale) {
+    public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant) {
         Optional<Etudiant> etudiantExists = etudiantService.findByEmail(etudiant.getCoordonnees().getEmail());
-        if(etudiantExists.isPresent()) throw new EtudiantExistsException(messageSource.getMessage("email.exists.error",null,locale));
+        if(etudiantExists.isPresent()) throw new EtudiantExistsException(messageSource.getMessage("email.exists.error",null, LocaleContextHolder.getLocale()));
         Etudiant etudiantCreer = etudiantService.ajouterEtudiant(etudiant);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etudiantCreer.getIdEtudiant()).toUri();
         return ResponseEntity.created(location).build();
@@ -48,9 +49,9 @@ public class EtudiantController {
     }
 
     @GetMapping("/etudiants/{email}")
-    public ResponseEntity<Etudiant> findByEmail(@PathVariable String email, @RequestHeader(name = ACCEPT_LANGUAGE) Locale locale) {
+    public ResponseEntity<Etudiant> findByEmail(@PathVariable String email) {
         Optional<Etudiant> etudiant = etudiantService.findByEmail(email);
-        if (!etudiant.isPresent()) throw new EtudiantNotFoundException(messageSource.getMessage("etudiant.not.found",null,locale));
+        if (!etudiant.isPresent()) throw new EtudiantNotFoundException(messageSource.getMessage("etudiant.not.found",null,LocaleContextHolder.getLocale()));
         return etudiant.map(ResponseEntity::ok).get();
     }
 }
