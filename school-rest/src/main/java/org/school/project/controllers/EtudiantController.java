@@ -27,7 +27,6 @@ public class EtudiantController {
     private EtudiantService etudiantService;
     private ClasseRepository classeRepository;
     private MessageSource messageSource;
-    private static final String ACCEPT_LANGUAGE = "Accept-Language";
 
     @Autowired
     public EtudiantController(EtudiantService etudiantService, ClasseRepository classeRepository, MessageSource messageSource) {
