@@ -1,0 +1,1 @@
+web: java -jar school-rest/target/school-rest-1.0-SNAPSHOT.jar
