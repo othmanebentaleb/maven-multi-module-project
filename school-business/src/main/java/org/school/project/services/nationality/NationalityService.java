@@ -4,7 +4,7 @@ import org.school.project.services.nationality.dto.NationalityDto;
 
 import java.util.List;
 
-public interface NationalityBusiness {
+public interface NationalityService {
 
     public List<NationalityDto> selectNationalities();
 }

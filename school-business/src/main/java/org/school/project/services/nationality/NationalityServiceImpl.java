@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NationalityBusinessImpl implements NationalityBusiness{
+public class NationalityServiceImpl implements NationalityService {
 
-    @Autowired
     private NationalityRepository repository;
 
-    @Autowired
     private NationalityAssembler assembler;
+
+    @Autowired
+    public NationalityServiceImpl(NationalityRepository repository, NationalityAssembler assembler) {
+        this.repository = repository;
+        this.assembler = assembler;
+    }
 
     @Override
     public List<NationalityDto> selectNationalities() {

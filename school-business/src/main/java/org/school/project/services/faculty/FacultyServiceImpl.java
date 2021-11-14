@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FacultyBusinessImpl implements FacultyBusiness {
+public class FacultyServiceImpl implements FacultyService {
 
-    @Autowired
     private FacultyRepository repository;
 
-    @Autowired
     private FacultyAssembler assembler;
+
+    @Autowired
+    public FacultyServiceImpl(FacultyRepository repository, FacultyAssembler assembler) {
+        this.repository = repository;
+        this.assembler = assembler;
+    }
 
     @Override
     public List<FacultyDto> selectFaculties() {

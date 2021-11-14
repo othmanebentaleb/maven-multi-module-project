@@ -4,7 +4,7 @@ import org.school.project.services.faculty.dto.FacultyDto;
 
 import java.util.List;
 
-public interface FacultyBusiness {
+public interface FacultyService {
 
     public List<FacultyDto> selectFaculties();
 }

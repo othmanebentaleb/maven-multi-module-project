@@ -5,7 +5,7 @@ import org.school.project.services.student.dto.StudentDto;
 import java.util.Date;
 import java.util.List;
 
-public interface StudentBusiness {
+public interface StudentService {
 
     public List<StudentDto> selectStudents();
 

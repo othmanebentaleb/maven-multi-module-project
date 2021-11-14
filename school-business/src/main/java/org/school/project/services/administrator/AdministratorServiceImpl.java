@@ -8,13 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AdministratorBusinessImpl implements AdministratorBusiness {
+public class AdministratorServiceImpl implements AdministratorService {
 
-    @Autowired
     private AdministratorRepository repository;
 
-    @Autowired
     private AdministratorAssembler assembler;
+
+    @Autowired
+    public AdministratorServiceImpl(AdministratorRepository repository, AdministratorAssembler assembler) {
+        this.repository = repository;
+        this.assembler = assembler;
+    }
 
     @Override
     public AdministratorDto findByUsernameAndPassword(String username, String password) {

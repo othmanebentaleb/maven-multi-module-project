@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LevelBusinessImpl implements LevelBusiness{
+public class LevelServiceImpl implements LevelService {
 
-    @Autowired
     private LevelRepository repository;
 
-    @Autowired
     private LevelAssembler assembler;
+
+    @Autowired
+    public LevelServiceImpl(LevelRepository repository, LevelAssembler assembler) {
+        this.repository = repository;
+        this.assembler = assembler;
+    }
 
     @Override
     public List<LevelDto> selectLevels() {

@@ -11,13 +11,17 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class StudentBusinessImpl implements StudentBusiness {
+public class StudentServiceImpl implements StudentService {
 
-    @Autowired
     private StudentRepository repository;
 
-    @Autowired
     private StudentAssembler assembler;
+
+    @Autowired
+    public StudentServiceImpl(StudentRepository repository, StudentAssembler assembler) {
+        this.repository = repository;
+        this.assembler = assembler;
+    }
 
     @Override
     public List<StudentDto> selectStudents() {

@@ -1,6 +1,6 @@
 package org.school.project.controllers.student;
 
-import org.school.project.services.student.StudentBusiness;
+import org.school.project.services.student.StudentService;
 import org.school.project.services.student.dto.StudentDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +12,19 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/student")
+@RequestMapping("/student")
 public class StudentControllerImpl implements StudentController {
 
+    private StudentService service;
+
     @Autowired
-    private StudentBusiness business;
+    public StudentControllerImpl(StudentService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<StudentDto>> selectStudents() {
-        List<StudentDto> result = this.business.selectStudents();
+        List<StudentDto> result = this.service.selectStudents();
         return ResponseEntity.ok(result);
     }
 

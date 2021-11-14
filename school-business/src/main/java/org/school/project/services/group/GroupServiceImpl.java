@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GroupBusinessImpl implements GroupBusiness{
+public class GroupServiceImpl implements GroupService {
 
-    @Autowired
     private GroupRepository repository;
 
-    @Autowired
     private GroupAssembler assembler;
+
+    @Autowired
+    public GroupServiceImpl(GroupRepository repository, GroupAssembler assembler) {
+        this.repository = repository;
+        this.assembler = assembler;
+    }
 
     @Override
     public List<GroupDto> selectGroupes() {

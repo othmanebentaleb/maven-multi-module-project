@@ -5,6 +5,6 @@ import org.school.project.services.student.dto.StudentDto;
 
 import java.util.List;
 
-public interface AbsenceBusiness {
+public interface AbsenceService {
     public List<AbsenceDto> selectAbsences();
 }

@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AbsenceBusinessImpl implements AbsenceBusiness {
+public class AbsenceServiceImpl implements AbsenceService {
 
-    @Autowired
     private AbsenceRepository repository;
 
-    @Autowired
     private AbsenceAssembler assembler;
+
+    @Autowired
+    public AbsenceServiceImpl(AbsenceRepository repository, AbsenceAssembler assembler) {
+        this.repository = repository;
+        this.assembler = assembler;
+    }
 
     @Override
     public List<AbsenceDto> selectAbsences() {
