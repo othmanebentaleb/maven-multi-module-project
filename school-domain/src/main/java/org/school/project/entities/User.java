@@ -1,13 +1,19 @@
 package org.school.project.entities;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Table(name="utilisateur")
 @Entity
+@Data
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(AccessLevel.NONE)
     private Long id;
 
     private String username;
@@ -33,84 +39,4 @@ public class User {
 
     @Column(name = "status", columnDefinition="TINYINT DEFAULT false")
     private boolean status;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public boolean isCanManageAbsences() {
-        return canManageAbsences;
-    }
-
-    public void setCanManageAbsences(boolean canManageAbsences) {
-        this.canManageAbsences = canManageAbsences;
-    }
-
-    public boolean isCanManageAttestationReussite() {
-        return canManageAttestationReussite;
-    }
-
-    public void setCanManageAttestationReussite(boolean canManageAttestationReussite) {
-        this.canManageAttestationReussite = canManageAttestationReussite;
-    }
-
-    public boolean isCanManageAttestationScolarite() {
-        return canManageAttestationScolarite;
-    }
-
-    public void setCanManageAttestationScolarite(boolean canManageAttestationScolarite) {
-        this.canManageAttestationScolarite = canManageAttestationScolarite;
-    }
-
-    public Boolean getBlockedAccount() {
-        return blockedAccount;
-    }
-
-    public void setBlockedAccount(Boolean blockedAccount) {
-        this.blockedAccount = blockedAccount;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 }
