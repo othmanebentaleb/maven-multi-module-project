@@ -77,7 +77,6 @@ public class StudentAssembler extends Assembler<StudentDto, Student> {
 
         Student model = new Student();
 
-        model.setId(dto.getId());
         model.setBirthDay(dto.getBirthDay());
         model.setBirthLocation(dto.getBirthLocation());
         model.setCin(dto.getCin());
@@ -109,11 +108,9 @@ public class StudentAssembler extends Assembler<StudentDto, Student> {
         model.getLevel().setLevel(dto.getLevel().getLevel());
 
         model.getLevel().setYear(new Year());
-        model.getLevel().getYear().setId(dto.getLevel().getYear().getId());
         model.getLevel().getYear().setYear(dto.getLevel().getYear().getYear());
 
         model.setSchooling(new Schooling());
-        model.getSchooling().setId(dto.getSchooling().getId());
         model.getSchooling().setBacNumber(dto.getSchooling().getBacNumber());
         model.getSchooling().setCity(dto.getSchooling().getCity());
         model.getSchooling().setYear(dto.getSchooling().getYear());
