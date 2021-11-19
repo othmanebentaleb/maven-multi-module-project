@@ -7,7 +7,7 @@ import org.school.project.services.student.dto.StudentDto;
 
 import java.util.function.Function;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StudentMapper {
 
     StudentMapper INSTANCE = Mappers.getMapper(StudentMapper.class);
@@ -17,7 +17,4 @@ public interface StudentMapper {
 
     Student studentDtoToStudent(StudentDto studentDto);
     StudentDto studentToStudentDto(Student student);
-    
-
-
 }

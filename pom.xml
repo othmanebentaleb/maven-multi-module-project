@@ -93,6 +93,10 @@
             <artifactId>dozer</artifactId>
             <version>5.4.0</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 
 
