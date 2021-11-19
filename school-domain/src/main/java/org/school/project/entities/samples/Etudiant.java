@@ -30,9 +30,9 @@ public class Etudiant {
     private Date dateNaissance;
     @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "coordonnees")
     private Coordonnees coordonnees;
-    @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "absences")
+    /*@OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "absences")
     private FicheAbsence absence;
     @ManyToOne
     @JoinColumn(name = "idClasse")
-    private Classe classe;
+    private Classe classe;*/
 }

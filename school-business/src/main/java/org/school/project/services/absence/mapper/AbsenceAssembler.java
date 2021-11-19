@@ -67,39 +67,39 @@ public class AbsenceAssembler extends Assembler<AbsenceDto, Absence> {
         studentDto.setInscriptionDate(studentModel.getInscriptionDate());
 
         studentDto.setFaculty(new FacultyDto());
-        studentDto.getFaculty().setId(studentModel.getFaculty().getId());
+       /* studentDto.getFaculty().setId(studentModel.getFaculty().getId());
         studentDto.getFaculty().setFaculty(studentModel.getFaculty().getFaculty());
         studentDto.getFaculty().setBrief(studentModel.getFaculty().getBrief());
-
+*/
         studentDto.setGroup(new GroupDto());
-        studentDto.getGroup().setId(studentModel.getGroup().getId());
+        /*studentDto.getGroup().setId(studentModel.getGroup().getId());
         studentDto.getGroup().setGroup(studentModel.getGroup().getGroup());
-
+*/
         studentDto.setNationality(new NationalityDto());
-        studentDto.getNationality().setId(studentModel.getNationality().getId());
+       /* studentDto.getNationality().setId(studentModel.getNationality().getId());
         studentDto.getNationality().setCode(studentModel.getNationality().getCode());
         studentDto.getNationality().setName(studentModel.getNationality().getName());
-
+*/
         studentDto.setLevel(new LevelDto());
-        studentDto.getLevel().setId(studentModel.getLevel().getId());
+       /* studentDto.getLevel().setId(studentModel.getLevel().getId());
         studentDto.getLevel().setLevel(studentModel.getLevel().getLevel());
-
+*/
         studentDto.getLevel().setYear(new YearDto());
-        studentDto.getLevel().getYear().setId(studentModel.getLevel().getYear().getId());
+   /*     studentDto.getLevel().getYear().setId(studentModel.getLevel().getYear().getId());
         studentDto.getLevel().getYear().setYear(studentModel.getLevel().getYear().getYear());
-
+*/
         studentDto.setSchooling(new SchoolingDto());
-        studentDto.getSchooling().setId(studentModel.getSchooling().getId());
+     /*   studentDto.getSchooling().setId(studentModel.getSchooling().getId());
         studentDto.getSchooling().setBacNumber(studentModel.getSchooling().getBacNumber());
         studentDto.getSchooling().setCity(studentModel.getSchooling().getCity());
         studentDto.getSchooling().setYear(studentModel.getSchooling().getYear());
         studentDto.getSchooling().setMention(studentModel.getSchooling().getMention());
         studentDto.getSchooling().setSerie(studentModel.getSchooling().getSerie());
-
+*/
         ParentInfoDto parentInfoDto = new ParentInfoDto();
-        if(Objects.nonNull(studentModel.getParentInfo())) {
+      /*  if(Objects.nonNull(studentModel.getParentInfo())) {
             parentInfoDto = getParentInfoDto(studentModel);
-        }
+        }*/
 
         studentDto.setParentInfo(parentInfoDto);
         return studentDto;
@@ -108,7 +108,7 @@ public class AbsenceAssembler extends Assembler<AbsenceDto, Absence> {
     private ParentInfoDto getParentInfoDto(Student studentModel) {
 
         ParentInfoDto dto = new ParentInfoDto();
-        dto.setAdress(studentModel.getParentInfo().getAdress());
+       /* dto.setAdress(studentModel.getParentInfo().getAdress());
         dto.setFatherEmail(studentModel.getParentInfo().getFatherEmail());
         dto.setFatherPhone(studentModel.getParentInfo().getFatherPhone());
         dto.setId(studentModel.getParentInfo().getId());
@@ -116,7 +116,7 @@ public class AbsenceAssembler extends Assembler<AbsenceDto, Absence> {
         dto.setMotherPhone(studentModel.getParentInfo().getMotherPhone());
         dto.setMotherProfession(studentModel.getParentInfo().getMotherProfession());
         dto.setResidencePhone(studentModel.getParentInfo().getResidencePhone());
-
+*/
         return dto;
     }
 

@@ -39,10 +39,10 @@ public class Student {
     @Accessors(chain = true)
     private Date birthDay;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
+    /*@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
     @JoinColumn(name="idNationalite")
     @Accessors(chain = true)
-    private Nationality nationality;
+    private Nationality nationality;*/
 
     @Column(name = "lieuNaissance")
     @Accessors(chain = true)
@@ -66,12 +66,12 @@ public class Student {
     @Accessors(chain = true)
     private String provenance;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
+    /*@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
     @JoinColumn(name = "idFiliere")
     @Accessors(chain = true)
-    private Faculty faculty;
+    private Faculty faculty;*/
 
-    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
+    /*@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
     @JoinColumn(name = "idNiveau")
     @Accessors(chain = true)
     private Level level;
@@ -85,11 +85,11 @@ public class Student {
     @JoinColumn(name = "idParentInfo")
     @Accessors(chain = true)
     private ParentInfo parentInfo;
-
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
+*/
+  /*  @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "idGroupe")
     @Accessors(chain = true)
-    private Group group;
+    private Group group;*/
 
     @Column(name = "telephone")
     @Accessors(chain = true)
