@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Table(name="SuccessCertificate")
 @Entity
@@ -18,10 +17,10 @@ public class SuccessCertificate {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE,  optional = false)
-    @JoinColumn(name = "id_Etudiant", unique=false, nullable=true, insertable=true, updatable=true)
+    @JoinColumn(name = "id_Etudiant")
     private Student student;
 
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE,  optional = false)
-    @JoinColumn(name = "id_Annee", unique=false, nullable=true, insertable=true, updatable=true)
+    @JoinColumn(name = "id_Annee")
     private Year year;
 }

@@ -16,14 +16,14 @@ public class Subject {
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    @Column(name = "nom")
-    private String name;
+/*    @Column(name = "nom")
+    private String name;*/
 
-    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
+   /* @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
     @JoinColumn(name = "id_Filiere")
     private Faculty faculty;
 
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL,  optional = false)
     @JoinColumn(name = "id_Niveau")
-    private Level level;
+    private Level level;*/
 }
