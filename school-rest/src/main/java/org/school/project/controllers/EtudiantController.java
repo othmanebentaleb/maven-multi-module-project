@@ -37,8 +37,8 @@ public class EtudiantController {
 
     @PostMapping("/etudiants")
     public ResponseEntity<Etudiant> creerEtudiant(@RequestBody Etudiant etudiant) {
-        Optional<Etudiant> etudiantExists = etudiantService.findByEmail(etudiant.getCoordonnees().getEmail());
-        if(etudiantExists.isPresent()) throw new EtudiantExistsException(messageSource.getMessage("email.exists.error",null, LocaleContextHolder.getLocale()));
+        Etudiant etudiantExists = etudiantService.findByEmail(etudiant.getCoordonnees().getEmail())
+                .orElseThrow(() -> new EtudiantExistsException(messageSource.getMessage("email.exists.error", null, LocaleContextHolder.getLocale())));
         Etudiant etudiantCreer = etudiantService.ajouterEtudiant(etudiant);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etudiantCreer.getIdEtudiant()).toUri();
         return ResponseEntity.created(location).build();
@@ -52,9 +52,9 @@ public class EtudiantController {
 
     @GetMapping("/etudiants/{email}")
     public EntityModel<Etudiant> findByEmail(@PathVariable String email) {
-        Optional<Etudiant> etudiant = etudiantService.findByEmail(email);
-        if (!etudiant.isPresent()) throw new EtudiantNotFoundException(messageSource.getMessage("etudiant.not.found",null,LocaleContextHolder.getLocale()));
-        EntityModel<Etudiant> entityModel = EntityModel.of(etudiant.get());
+        Etudiant etudiant = etudiantService.findByEmail(email)
+                .orElseThrow(() -> new EtudiantNotFoundException(messageSource.getMessage("etudiant.not.found", null, LocaleContextHolder.getLocale())));
+        EntityModel<Etudiant> entityModel = EntityModel.of(etudiant);
         WebMvcLinkBuilder linkToAllStudents = linkTo(methodOn(this.getClass()).getAllEtudiants());
         entityModel.add(linkToAllStudents.withRel("all-students"));
         return entityModel;
